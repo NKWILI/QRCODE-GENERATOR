@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download QR Code</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Download QR Code</h2>
+        <img id="qrImage" src="" alt="QR Code">
+        <br>
+        <button onclick="downloadPDF()">Download PDF</button>
+    </div>
+
+    <script>
+        // Get the QR code image URL from the query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const qrImageSrc = urlParams.get('qrImage');
+
+        if (qrImageSrc) {
+            document.getElementById('qrImage').src = qrImageSrc;
+        }
+
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const qrImage = document.getElementById("qrImage");
+
+            // Set font size for the title to make it larger
+            doc.setFontSize(40); 
+
+            // Calculate x position to center the text
+            const title = 'Scan me';
+            const titleWidth = doc.getTextWidth(title);
+            const xPosition = (doc.internal.pageSize.width - titleWidth) / 2;
+
+            
+            doc.text(title, xPosition, 30); // Position the title centered
+
+            // Add the QR code image to the PDF and reduce its size
+            doc.addImage(qrImage.src, 'PNG', 10, 50, 120, 120); 
+            doc.save('qr-code.pdf');
+        }
+    </script>
+</body>
+</html>

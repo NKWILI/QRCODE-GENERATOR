@@ -63,7 +63,7 @@ This is a simple yet powerful **QR Code Generator** web application. Users can t
 
 ## 🔗 Live Demo
 
-🌐 [Try it out on GitHub Pages](https://nkwili.github.io/qr-code-generator)
+🌐 [Try it out on GitHub Pages](https://nkwili.github.io/QRCODE-GENERATOR/)
 
 ---
 

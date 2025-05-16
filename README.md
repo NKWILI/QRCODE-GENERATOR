@@ -55,20 +55,9 @@ This is a simple yet powerful **QR Code Generator** web application. Users can t
    ```bash
    git clone https://github.com/yourusername/qr-code-generator.git
    cd qr-code-generator
-````
 
 2. Open `index.html` in your browser.
 3. Done!
-
----
-
-## 🧠 Ideas for Improvement
-
-* Add user authentication for saving QR codes
-* Support dynamic QR code styling (colors, logos)
-* Enable file attachments or images in TinyMCE
-* Save history of generated codes using localStorage
-
 
 ---
 
